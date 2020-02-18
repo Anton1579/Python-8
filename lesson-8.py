@@ -115,3 +115,55 @@ class Error:
 conclusion = Error(1)
 print(conclusion.my_list())
 
+
+# 4. Начните работу над проектом «Склад оргтехники». Создайте класс, описывающий склад. А также класс
+# «Оргтехника», который будет базовым для классов-наследников. Эти классы — конкретные типы оргтехники
+# (принтер, сканер, ксерокс). В базовом классе определить параметры, общие для приведенных типов.
+# В классах-наследниках реализовать параметры, уникальные для каждого типа оргтехники.
+
+class Warehouse:
+    def __init__(self, name, quantity, price):
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+
+
+class Printer(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 30
+
+    def papers(self):
+        return f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} ' \
+               f'Количество бумаги-{self.paper} листов'
+
+
+class Scanner(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.ink = 70
+
+    def ink_1(self):
+        return f'Название товара-{self.name}, количество-{self.quantity} цена-{self.price} ' \
+               f'Количество чернил-{self.ink} %'
+
+
+class Xerox(Warehouse):
+
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 25
+
+    def papers(self):
+        print(f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} '
+              f' Количество листов-{self.paper}')
+
+
+
+
+xerox = Xerox('Philips', 23, 2000)
+printer = Printer('Hp', 20, 2000)
+scanner = Scanner('Sony', 24, 1900)
+xerox.papers()
+print(printer.papers())
+print(scanner.ink_1())
