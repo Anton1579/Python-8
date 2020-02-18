@@ -284,3 +284,34 @@ print(scanner.ink_1())
 print(xerox.__dict__)
 print(printer.__dict__)
 print(scanner.__dict__)
+
+# 7. Реализовать проект «Операции с комплексными числами». Создайте класс «Комплексное число»,
+# реализуйте перегрузку методов сложения и умножения комплексных чисел. Проверьте работу проекта,
+# создав экземпляры класса (комплексные числа) и выполнив сложение и умножение созданных экземпляров.
+# Проверьте корректность полученного результата.
+
+
+class ComplexNumber:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        self.suma_x = self.x + other.x
+        self.suma_y = self.y + other.y
+
+    def __mul__(self, other):
+        self.mult_x = self.x * other.x - self.y * other.y
+        self.mult_y = self.y * other.x + self.x * other.y
+
+
+x = float(input('x = : '))
+y = float(input('y = : '))
+a = ComplexNumber(x, y)
+x = float(input('x = : '))
+y = float(input('y = : '))
+b = ComplexNumber(x, y)
+a + b
+a * b
+print('Сумма:   %.2f + %.2f' % (a.suma_x, a.suma_y))
+print('Произв.: %.2f + %.2f' % (a.mult_x, a.mult_y))
