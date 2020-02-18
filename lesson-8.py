@@ -221,3 +221,66 @@ print(scanner.ink_1())
 print(xerox.__dict__)
 print(printer.__dict__)
 print(scanner.__dict__)
+
+
+# 6. Продолжить работу над вторым заданием. Реализуйте механизм валидации вводимых пользователем
+# данных. Например, для указания количества принтеров, отправленных на склад, нельзя использовать
+# строковый тип данных.
+
+class Warehouse:
+    def __init__(self, name, quantity, price):
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+
+
+class Printer(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 30
+
+    def papers(self):
+        return f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} ' \
+               f'Количество бумаги-{self.paper} листов'
+
+
+class Scanner(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.ink = 70
+
+    def ink_1(self):
+        return f'Название товара-{self.name}, количество-{self.quantity} цена-{self.price} ' \
+               f'Количество чернил-{self.ink} %'
+
+
+class Xerox(Warehouse):
+
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 25
+
+    def papers(self):
+        print(f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} '
+              f' Количество листов-{self.paper}')
+
+
+
+name = input('Название товара Xerox: ')
+quantity = int(input('количество: '))
+price = int(input('цена: '))
+xerox = Xerox(name, quantity, price)
+name = input('Название товара Printer: ')
+quantity = int(input('количество: '))
+price = int(input('цена: '))
+printer = Printer(name, quantity, price)
+name = input('Название товара Scanner: ')
+quantity = int(input('количество: '))
+price = int(input('цена: '))
+scanner = Scanner(name, quantity, price)
+xerox.papers()
+print(printer.papers())
+print(scanner.ink_1())
+print(xerox.__dict__)
+print(printer.__dict__)
+print(scanner.__dict__)
