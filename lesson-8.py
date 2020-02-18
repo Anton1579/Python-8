@@ -33,3 +33,45 @@ date_2 = Date.date_static(21, 1)
 print(date.display())
 print(date_1.display())
 print(date_2.display())
+
+
+# 2. Создайте собственный класс-исключение, обрабатывающий ситуацию деления на нуль.
+# Проверьте его работу на данных, вводимых пользователем. При вводе пользователем нуля
+# в качестве делителя программа должна корректно обработать эту ситуацию и не завершиться с ошибкой.
+
+
+class ZeroDivisionError:
+    def __init__(self, x):
+        self.x = x
+
+
+    def __truediv__(self, y):
+        try:
+            return round(self.x / y)
+        except:
+            return ('ZeroDivisionError')
+
+
+number = ZeroDivisionError(50)
+print(number / 5)
+print(number / 0)
+
+# 2 --------------------------
+class ZeroDivisionError:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    @staticmethod
+    def truediv(x, y):
+        try:
+            return (x / y)
+        except:
+            return ('ZeroDivisionError')
+
+
+number = ZeroDivisionError(25, 4)
+print(ZeroDivisionError.truediv(10, 5))
+print(ZeroDivisionError.truediv(10, 2))
+print(number.truediv(100, 0))
+
