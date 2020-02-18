@@ -167,3 +167,57 @@ scanner = Scanner('Sony', 24, 1900)
 xerox.papers()
 print(printer.papers())
 print(scanner.ink_1())
+
+# 5. Продолжить работу над первым заданием. Разработать методы, отвечающие за приём оргтехники на склад
+# и передачу в определенное подразделение компании. Для хранения данных о наименовании и количестве единиц
+# оргтехники, а также других данных, можно использовать любую подходящую структуру, например словарь.
+
+class Warehouse:
+    def __init__(self, name, quantity, price):
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+
+
+class Printer(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 30
+
+    def papers(self):
+        return f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} ' \
+               f'Количество бумаги-{self.paper} листов'
+
+
+class Scanner(Warehouse):
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.ink = 70
+
+    def ink_1(self):
+        return f'Название товара-{self.name}, количество-{self.quantity} цена-{self.price} ' \
+               f'Количество чернил-{self.ink} %'
+
+
+class Xerox(Warehouse):
+
+    def __init__(self, name, quantity, price):
+        super().__init__(name, quantity, price)
+        self.paper = 25
+
+    def papers(self):
+        print(f'Название товара-{self.name} количество-{self.quantity} цена-{self.price} '
+              f' Количество листов-{self.paper}')
+
+
+
+
+xerox = Xerox('Philips', 23, 2000)
+printer = Printer('Hp', 20, 2000)
+scanner = Scanner('Sony', 24, 1900)
+xerox.papers()
+print(printer.papers())
+print(scanner.ink_1())
+print(xerox.__dict__)
+print(printer.__dict__)
+print(scanner.__dict__)
